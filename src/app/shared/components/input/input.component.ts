@@ -9,6 +9,7 @@ type  ButtonType = "text" | "number" | "tel" | "email" | "password"
   styleUrls: ['./input.component.scss'],
 })
 export class InputComponent   {
+  @Input() icon: string = "";
   @Input() label: string = "";
   @Input() Control = new  FormControl();
   @Input() type: ButtonType = "text";
