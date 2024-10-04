@@ -4,8 +4,9 @@ import { InputComponent } from './components/input/input.component';
 import { IonicModule } from '@ionic/angular';
 import { FormsModule } from '@angular/forms';
 import { AvatarComponent } from './components/avatar/avatar.component';
+import { ButtonComponent } from './components/button/button.component';
 
-const Components = [InputComponent,AvatarComponent];
+const Components = [InputComponent, AvatarComponent, ButtonComponent];
 const Modules = [CommonModule, IonicModule, FormsModule];
 
 @NgModule({
