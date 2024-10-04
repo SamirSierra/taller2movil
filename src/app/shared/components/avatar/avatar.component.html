@@ -1,0 +1,5 @@
+<ion-avatar (click)="file.click()">
+  <img alt="Silhouette of a person's head" [src]="image" />
+</ion-avatar>
+
+<input [accept]="mimeType" [multiple]="false" (change)="uploadFile($event)" type="file" #file style="opacity: 0;">
