@@ -1,51 +1,7 @@
 <ion-content [fullscreen]="true">
-  <form>
-    
-      <ion-card-content>
-        <app-avatar></app-avatar>
-      </ion-card-content>
-    
-
-    <ion-card>
-      <ion-card-content>
-        <ion-input label="Name..." type="text"></ion-input>
-      </ion-card-content>
-    </ion-card>
-
-    <ion-card>
-      <ion-card-content>
-        <ion-input label="Lastname..." type="text"></ion-input>
-      </ion-card-content>
-    </ion-card>
-
-    <ion-card>
-      <ion-card-content>
-        <ion-input label="Age..." type="number"></ion-input>
-      </ion-card-content>
-    </ion-card>
-
-    <ion-card>
-      <ion-card-content>
-        <ion-input label="Phone..." type="number"></ion-input>
-      </ion-card-content>
-    </ion-card>
-
-    <ion-card>
-      <ion-card-content>
-        <ion-input label="E-mail..." type="email"></ion-input>
-      </ion-card-content>
-    </ion-card>
-
-    <ion-card>
-      <ion-card-content>
-        <ion-input label="Password..." type="password"></ion-input>
-      </ion-card-content>
-    </ion-card>
-
-    
-      <ion-card-content>
-        <ion-button expand="full" type="submit">Register</ion-button>
-      </ion-card-content>
-    
-  </form>
+ <ion-row>
+  <ion-col>
+    <a [routerLink]="['/register']" >registrar</a>
+  </ion-col>
+ </ion-row>
 </ion-content>
