@@ -9,11 +9,17 @@ import { AngularFireAuthModule} from '@angular/fire/compat/auth'
 import { AppComponent } from './app.component';
 import { AppRoutingModule } from './app-routing.module';
 import { environment } from 'src/environments/environment.prod';
+<<<<<<< HEAD
 
+=======
+import { InputComponent } from './shared/components/input/input.component';
+import { CoreModule } from './core/core/core.module';
+>>>>>>> feature/registrar
 
 @NgModule({
   declarations: [AppComponent],
   imports: [
+    CoreModule,
     BrowserModule,
     IonicModule.forRoot(),
     AppRoutingModule,
