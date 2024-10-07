@@ -1,1 +1,4 @@
-<ion-input class="border-bottom" [type]="type" [label]="label" (keyup)="setValue($event)"></ion-input>
+<ion-item [ngStyle]="{'width': width, 'height': height}">
+    <ion-icon slot="start" [name]="icon"></ion-icon>
+    <ion-input [type]="type" [placeholder]="label" (keyup)="setValue($event)"></ion-input>
+</ion-item>
