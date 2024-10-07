@@ -15,6 +15,10 @@ export class LoginPage {
     this.initForm();
   }
 
+  public doLogin() {
+    console.log(this.form.value);
+  }
+
   private initForm() {
     this.email = new FormControl('', [Validators.email, Validators.required]);
     this.password = new FormControl('', [Validators.required]);
