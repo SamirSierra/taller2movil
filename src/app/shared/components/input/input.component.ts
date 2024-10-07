@@ -1,4 +1,4 @@
-import { Component, Input, OnInit, Type } from '@angular/core';
+import { Component, Input} from '@angular/core';
 import { FormControl } from '@angular/forms';
 
 type  ButtonType = "text" | "number" | "tel" | "email" | "password"
@@ -9,6 +9,9 @@ type  ButtonType = "text" | "number" | "tel" | "email" | "password"
   styleUrls: ['./input.component.scss'],
 })
 export class InputComponent   {
+  @Input() width: string = "auto";
+  @Input() height: string = "auto";
+  @Input() icon: string = "";
   @Input() label: string = "";
   @Input() Control = new  FormControl();
   @Input() type: ButtonType = "text";
@@ -27,4 +30,3 @@ export class InputComponent   {
 
 
 }
- 

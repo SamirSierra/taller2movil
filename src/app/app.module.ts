@@ -9,16 +9,19 @@ import { AngularFireAuthModule} from '@angular/fire/compat/auth'
 import { AppComponent } from './app.component';
 import { AppRoutingModule } from './app-routing.module';
 import { environment } from 'src/environments/environment.prod';
-
+import { CoreModule } from './core/core/core.module';
+import { ReactiveFormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [AppComponent],
   imports: [
+    CoreModule,
     BrowserModule,
     IonicModule.forRoot(),
     AppRoutingModule,
     AngularFireModule.initializeApp(environment.FIREBASE_CREDENTIALS),
     AngularFireAuthModule,
+    ReactiveFormsModule
   ],
   providers: [{ provide: BaseRouteReuseStrategy, useClass: IonicRouteStrategy }],
   bootstrap: [AppComponent],

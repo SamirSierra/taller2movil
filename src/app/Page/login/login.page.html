@@ -1,0 +1,43 @@
+<ion-content [fullscreen]="true">
+  <form [formGroup]="form" (ngSubmit)="doLogin()">
+    <ion-row>
+      <ion-col>
+        <app-input
+          formControlName="email"
+          icon="person"
+          label="Email"
+          type="email"
+        ></app-input>
+      </ion-col>
+    </ion-row>
+    <ion-row>
+      <ion-col>
+        <app-input
+          formControlName="password"
+          icon="lock-closed-outline"
+          label="Password"
+          type="password"
+        ></app-input>
+      </ion-col>
+    </ion-row>
+    <ion-row>
+      <ion-col>
+        <a  [routerLink]="['/register']">register</a>
+      </ion-col>
+    </ion-row>
+    <ion-row>
+      <ion-col>
+        <ion-button type="submit">login</ion-button>
+      </ion-col>
+    </ion-row>
+    <ion-row>
+      <ion-col>
+        <img
+          class="IconNote"
+          src="../../../assets/IconNote.png"
+          alt="Icon note"
+        />
+      </ion-col>
+    </ion-row>
+  </form>
+</ion-content>

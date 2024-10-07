@@ -5,6 +5,7 @@ import { IonicModule } from '@ionic/angular';
 import { FormsModule } from '@angular/forms';
 import { AvatarComponent } from './components/avatar/avatar.component';
 import { ButtonComponent } from './components/button/button.component';
+import { AuthService } from './services/auth/auth.service';
 
 const Components = [InputComponent, AvatarComponent, ButtonComponent];
 const Modules = [CommonModule, IonicModule, FormsModule];
@@ -12,6 +13,7 @@ const Modules = [CommonModule, IonicModule, FormsModule];
 @NgModule({
   declarations: [...Components],
   imports: [...Modules],
-  exports: [...Components, ...Modules]
+  exports: [...Components, ...Modules],
+  providers: [AuthService],
 })
 export class SharedModule {}
