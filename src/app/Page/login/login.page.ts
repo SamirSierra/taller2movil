@@ -1,5 +1,7 @@
 import { Component } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
+import { NavController } from '@ionic/angular';
+import { AuthService } from 'src/app/shared/services/auth/auth.service';
 
 @Component({
   selector: 'app-login',
@@ -11,11 +13,21 @@ export class LoginPage {
   public password!: FormControl;
   public form!: FormGroup;
 
-  constructor() {
+  constructor(
+    private readonly authSrv: AuthService,
+    private readonly navCtr: NavController
+  ) {
     this.initForm();
   }
 
-  public doLogin() {
+  public async doLogin() {
+    try {
+      const {email, password} = this.form.value;
+      await this.authSrv.login(email, password);
+      this.navCtr.navigateForward("home");
+    } catch (error) {
+      console.error(error);
+    }
     console.log(this.form.value);
   }
 
