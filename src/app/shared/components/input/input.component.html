@@ -4,6 +4,7 @@
         [name]="icon">
     </ion-icon>
     <ion-input 
+        [disabled]="disabled"
         [type]="type" 
         [placeholder]="label" 
         (keyup)="setValue($event)">

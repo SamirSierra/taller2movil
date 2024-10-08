@@ -13,8 +13,9 @@ export class InputComponent   {
   @Input() height: string = "auto";
   @Input() icon: string = "";
   @Input() label: string = "";
-  @Input() Control = new  FormControl();
+  @Input() Control = new FormControl();
   @Input() type: ButtonType = "text";
+  @Input() disabled: boolean = false;
 
   constructor() { }
 
