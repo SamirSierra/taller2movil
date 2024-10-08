@@ -1,0 +1,18 @@
+<ion-content [fullscreen]="true">
+  <br>
+  <ion-input label="Title..." label-placement="floating" fill="outline" placeholder="Enter title" type="text" [(ngModel)]="title" required></ion-input>
+  <br>
+  <ion-input label="Description..." label-placement="floating" fill="outline" placeholder="Enter description" type="text" [(ngModel)]="description" required></ion-input>
+  <br>
+  <ion-input label="Date..." label-placement="floating" fill="outline" placeholder="Enter date" type="date" [(ngModel)]="date" required></ion-input>
+  <br>
+  <ion-input label="User ID..." label-placement="floating" fill="outline" placeholder="Enter ID" type="number" [(ngModel)]="userId" required></ion-input>
+  <br>
+  <ion-button expand="full" (click)="saveTareas()">Done</ion-button>
+  <ion-button>
+    
+  </ion-button>
+  <ion-button>
+    
+  </ion-button>
+</ion-content>
