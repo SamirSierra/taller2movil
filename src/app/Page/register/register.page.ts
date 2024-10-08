@@ -1,7 +1,9 @@
 import { Component, OnInit } from '@angular/core';
-import { FormControl, FormGroup, Validators } from '@angular/forms';
+import { AbstractControl, FormControl, FormGroup, ValidationErrors, Validators } from '@angular/forms';
 import { LoadingService } from 'src/app/shared/Controllers/loading/loading.service';
 import { AuthService } from 'src/app/shared/services/auth/auth.service';
+import { AlertController, NavController } from '@ionic/angular';
+import { FirebaseService } from 'src/app/shared/services/firebase/firebase.service';
 
 @Component({
   selector: 'app-register',
@@ -9,7 +11,6 @@ import { AuthService } from 'src/app/shared/services/auth/auth.service';
   styleUrls: ['./register.page.scss'],
 })
 export class RegisterPage {
-  public confirmPassword!: FormControl;
   public image!: FormControl;
   public name!: FormControl;
   public Lastname!: FormControl;
@@ -17,10 +18,16 @@ export class RegisterPage {
   public Phone!: FormControl;
   public Email!: FormControl;
   public Password!: FormControl;
+  public confirmPassword!: FormControl;
   public registerForm!: FormGroup;
+  public passwordVisible: boolean = false;
+  public confirmPasswordVisible: boolean = false;
+  
   constructor(
     private readonly authSrv: AuthService,
-    private readonly Loadingsrv: LoadingService
+    private readonly Loadingsrv: LoadingService,
+    private readonly navCtr: NavController,
+    private readonly firebaseService: FirebaseService
   ) {
     this.InitForm();
   }
@@ -28,8 +35,13 @@ export class RegisterPage {
   public async doRegister() {
     try {
       await this.Loadingsrv.show();
+      const userData = this.registerForm.value;
+      await this.firebaseService.addUser(userData);
+      console.log('User registered: ', userData);
+
       console.log(this.registerForm.value);
       const { Email, Password } = this.registerForm.value;
+      this.navCtr.navigateForward('login');
       const response = await this.authSrv.register(Email, Password);
       await this.Loadingsrv.Dismiss();
     } catch (error) {
@@ -56,11 +68,6 @@ export class RegisterPage {
       Email: this.Email,
       Password: this.Password,
       confirmPassword: this.confirmPassword,
-    }, );
-  }
-  private passwordMatchValidator(form: FormGroup) {
-    return form.get('Password')?.value === form.get('confirmPassword')?.value
-      ? null
-      : { mismatch: true };
+    });
   }
 }

@@ -4,6 +4,7 @@ import { AngularFireModule } from '@angular/fire/compat';
 import { environment } from 'src/environments/environment';
 import {AngularFireStorageModule} from '@angular/fire/compat/storage'
 import { AngularFireAuthModule } from '@angular/fire/compat/auth';
+import { AngularFirestoreModule } from '@angular/fire/compat/firestore';
 
 @NgModule({
   declarations: [],
@@ -11,7 +12,8 @@ import { AngularFireAuthModule } from '@angular/fire/compat/auth';
     CommonModule,
     AngularFireModule.initializeApp(environment.FIREBASE_CREDENTIALS),
     AngularFireStorageModule,
-    AngularFireAuthModule
+    AngularFireAuthModule,
+    AngularFirestoreModule
   ]
 })
 export class CoreModule { }
