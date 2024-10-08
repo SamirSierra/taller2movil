@@ -40,17 +40,23 @@
     <ion-card>
       <ion-card-content>
         <app-input icon="calendar" [Control]="Password" label="Password..." type="password"></app-input>
+        <ion-icon name="eye" (click)="passwordVisible = !passwordVisible" *ngIf="!passwordVisible" slot="end"
+          style="cursor: pointer;"></ion-icon>
+        <ion-icon name="eye-off" (click)="passwordVisible = !passwordVisible" *ngIf="passwordVisible" slot="end"
+          style="cursor: pointer;"></ion-icon>
       </ion-card-content>
     </ion-card>
     <ion-card>
       <ion-card-content>
-        <app-input icon="calendar" [Control]="Password" label="Confirm Password..." type="password"></app-input>
+        <app-input icon="calendar" [Control]="confirmPassword" label="Confirm Password..." type="password"></app-input>
+
       </ion-card-content>
     </ion-card>
 
     
       <ion-card-content>
-        <app-button  color="primary"  expand="full" type="submit" value="Register"></app-button>
+        <app-button type="submit" value="register" expand="full" color="primary"></app-button>
+
       </ion-card-content>
   </form>
 </ion-content>
