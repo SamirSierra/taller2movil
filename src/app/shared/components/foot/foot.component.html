@@ -4,15 +4,15 @@
     Home
   </ion-tab-button>
   <ion-tab-button (click)="navigateToTareas()">
-    <ion-icon name="add-circle"></ion-icon>
+    <ion-icon name="add-circle" [ngStyle]="{'color': color_Tarea }"></ion-icon>
     Nueva Tarea
   </ion-tab-button>
   <ion-tab-button tab="library">
-    <ion-icon name="person-circle"></ion-icon>
+    <ion-icon name="person-circle" [ngStyle]="{'color': color_Perfil }"></ion-icon>
     Mi Perfil
   </ion-tab-button>
   <ion-tab-button tab="search">
-    <ion-icon name="power"></ion-icon>
+    <ion-icon name="power" [ngStyle]="{'color': color_Salir }"></ion-icon>
     Salir
   </ion-tab-button>
 </ion-tab-bar>
