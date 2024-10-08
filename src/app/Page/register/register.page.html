@@ -1,44 +1,50 @@
 <ion-content [fullscreen]="true">
-  <form>
+
+  <form [formGroup]="registerForm" (ngSubmit)="doRegister()">
     
       <ion-card-content>
-        <app-avatar></app-avatar>
+        <app-avatar [control]="image"></app-avatar>
       </ion-card-content>
     
 
     <ion-card>
       <ion-card-content>
-        <app-input label="Name..." type="text"></app-input>
+        <app-input icon="person" [Control]="name" label="Name..." type="text"></app-input>
       </ion-card-content>
     </ion-card>
 
     <ion-card>
       <ion-card-content>
-        <app-input label="Lastname..." type="text"></app-input>
+        <app-input icon="person" [Control]="Lastname"  label="Lastname..." type="text"></app-input>
       </ion-card-content>
     </ion-card>
 
     <ion-card>
       <ion-card-content>
-        <app-input label="Age..." type="number"></app-input>
+        <app-input icon="time" [Control]="Age"  label="Age..." type="number"></app-input>
       </ion-card-content>
     </ion-card>
 
     <ion-card>
       <ion-card-content>
-        <app-input label="Phone..." type="number"></app-input>
+        <app-input icon="call" [Control]="Phone"  label="Phone..." type="number"></app-input>
       </ion-card-content>
     </ion-card>
 
     <ion-card>
       <ion-card-content>
-        <app-input label="E-mail..." type="email"></app-input>
+        <app-input icon="mail" [Control]="Email"  label="E-mail..." type="email"></app-input>
       </ion-card-content>
     </ion-card>
 
     <ion-card>
       <ion-card-content>
-        <app-input label="Password..." type="password"></app-input>
+        <app-input icon="lock-closed" [Control]="Password" label="Password..." type="password"></app-input>
+      </ion-card-content>
+    </ion-card>
+    <ion-card>
+      <ion-card-content>
+        <app-input icon="lock-closed" [Control]="Password" label="Confirm Password..." type="password"></app-input>
       </ion-card-content>
     </ion-card>
 

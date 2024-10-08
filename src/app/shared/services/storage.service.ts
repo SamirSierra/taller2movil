@@ -8,5 +8,15 @@ export class StorageService {
 
   constructor(private readonly fbStorage: AngularFireStorage) { }
 
- 
+ public async UploadFileAndGetUrl(file:File): Promise<string> {
+  try {
+    const name = `users/${Date.now()}-${file.name}`;
+    const uploaded = await this.fbStorage.upload(name,file);
+    const url = uploaded.ref.getDownloadURL();
+    return url;
+    
+  } catch (error) {
+    throw error;
+  }
+ }
 }
