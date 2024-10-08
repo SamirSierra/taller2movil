@@ -1,5 +1,7 @@
 import { NgModule } from '@angular/core';
 import { PreloadAllModules, RouterModule, Routes } from '@angular/router';
+import { HomePage } from './Page/home/home.page';
+import { TareasPage } from './Page/tareas/tareas.page';
 
 const routes: Routes = [
   {
@@ -7,6 +9,7 @@ const routes: Routes = [
     loadChildren: () =>
       import('./Page/home/home.module').then((m) => m.HomePageModule),
   },
+
   {
     path: 'login',
     loadChildren: () =>
@@ -19,12 +22,22 @@ const routes: Routes = [
         (m) => m.RegisterPageModule
       ),
   },
-
+  { path: 'tareas', loadChildren: () => 
+    import('./Page/tareas/tareas.module').then(m => m.TareasPageModule) },
+    { path: '', redirectTo: 'home', pathMatch: 'full' },
+  { path: 'home', component: HomePage },
+  { path: 'nueva-tarea', component: TareasPage }, 
+  
   {
     path: '**',
     redirectTo: 'login',
     pathMatch: 'full',
   },
+  {
+    path: 'tareas',
+    loadChildren: () => import('./Page/tareas/tareas.module').then( m => m.TareasPageModule)
+  },
+
 ];
 
 @NgModule({

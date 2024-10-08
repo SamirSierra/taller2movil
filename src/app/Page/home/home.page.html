@@ -1,0 +1,25 @@
+<ion-tabs>
+  <ion-tab tab="home">
+    <div id="home-page">
+      <ion-header>
+        <ion-toolbar>
+          <ion-title>Home</ion-title>
+        </ion-toolbar>
+      </ion-header>
+      <ion-content>
+        <ion-list>
+          <ion-item *ngFor="let task of tasks">
+            <ion-label>
+              <h2>{{ task.title }}</h2>
+              <p>{{ task.description }}</p>
+              <p><strong>Date:</strong> {{ task.date }}</p>
+              <p><strong>User ID:</strong> {{ task.userId }}</p>
+            </ion-label>
+          </ion-item>
+        </ion-list>
+      </ion-content>
+    </div>
+  </ion-tab>
+
+  <app-foot color_Home="#F4E59E"></app-foot>
+</ion-tabs>

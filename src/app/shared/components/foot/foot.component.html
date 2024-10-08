@@ -1,0 +1,18 @@
+<ion-tab-bar slot="bottom">
+  <ion-tab-button tab="home" (click)="navigateToHome()">
+    <ion-icon name="home" [ngStyle]="{'color': color_Home }"></ion-icon>
+    Home
+  </ion-tab-button>
+  <ion-tab-button (click)="navigateToTareas()">
+    <ion-icon name="add-circle"></ion-icon>
+    Nueva Tarea
+  </ion-tab-button>
+  <ion-tab-button tab="library">
+    <ion-icon name="person-circle"></ion-icon>
+    Mi Perfil
+  </ion-tab-button>
+  <ion-tab-button tab="search">
+    <ion-icon name="power"></ion-icon>
+    Salir
+  </ion-tab-button>
+</ion-tab-bar>
