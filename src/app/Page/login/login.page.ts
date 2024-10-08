@@ -28,7 +28,6 @@ export class LoginPage {
     } catch (error) {
       console.error(error);
     }
-    console.log(this.form.value);
   }
 
   private initForm() {

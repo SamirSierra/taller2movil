@@ -15,6 +15,11 @@ export class AuthService {
   }
 
   public async login(email: string, Password: string) {
+    return new Promise((resolve, reject) => {
+      this.angularFire.signInWithEmailAndPassword(email, Password)
+      .then((res) => resolve(res))
+      .catch((err) => reject(err));
+    })
     return await this.angularFire.signInWithEmailAndPassword(email, Password);
   }
 
