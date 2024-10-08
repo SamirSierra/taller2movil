@@ -24,7 +24,7 @@ const routes: Routes = [
   },
   { path: 'tareas', loadChildren: () => 
     import('./Page/tareas/tareas.module').then(m => m.TareasPageModule) },
-    { path: '', redirectTo: 'home', pathMatch: 'full' },
+    { path: '', redirectTo: 'login', pathMatch: 'full' },
   { path: 'home', component: HomePage },
   { path: 'nueva-tarea', component: TareasPage }, 
   
