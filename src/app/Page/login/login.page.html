@@ -12,7 +12,7 @@
     <ion-row>
       <ion-col>
         <app-input
-          formControlName="email"
+          [Control]="email"
           icon="person"
           label="Email"
           type="email"
@@ -22,7 +22,7 @@
     <ion-row>
       <ion-col>
         <app-input
-          formControlName="password"
+          [Control]="password"
           icon="lock-closed-outline"
           label="Password"
           type="password"
@@ -36,7 +36,12 @@
     </ion-row>
     <ion-row>
       <ion-col>
-        <app-button type="submit" value="login" width="305px"></app-button>
+        <app-button
+          [disable]="this.form.invalid" 
+          type="submit" 
+          value="login" 
+          width="305px">
+        </app-button>
       </ion-col>
     </ion-row>
   </form>
