@@ -11,15 +11,9 @@ export class HomePage implements OnInit {
   tasks: any[] = [];
   expandedIndex: number | null = null;
 
-  constructor(private router: Router, private tareasService: TareasService) {}
+  constructor(private tareasService: TareasService) {}
 
   ngOnInit() {
     this.tasks = this.tareasService.getTasks();
-  }
-
-  
-
-  navigateToTareas() {
-    this.router.navigate(['/nueva-tarea']);
   }
 }

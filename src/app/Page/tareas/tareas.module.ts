@@ -7,12 +7,11 @@ import { IonicModule } from '@ionic/angular';
 import { TareasPageRoutingModule } from './tareas-routing.module';
 
 import { TareasPage } from './tareas.page';
+import { SharedModule } from 'src/app/shared/shared.module';
 
 @NgModule({
   imports: [
-    CommonModule,
-    FormsModule,
-    IonicModule,
+    SharedModule,
     TareasPageRoutingModule
   ],
   declarations: [TareasPage]

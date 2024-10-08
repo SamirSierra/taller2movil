@@ -1,9 +1,18 @@
 <ion-content [fullscreen]="true">
+  <ion-row>
+    <ion-col>
+      <img
+        class="IconNote"
+        src="../../../assets/IconNote.png"
+        alt="Icon note"
+      />
+    </ion-col>
+  </ion-row>
   <form [formGroup]="form" (ngSubmit)="doLogin()">
     <ion-row>
       <ion-col>
         <app-input
-          formControlName="email"
+          [Control]="email"
           icon="person"
           label="Email"
           type="email"
@@ -13,7 +22,7 @@
     <ion-row>
       <ion-col>
         <app-input
-          formControlName="password"
+          [Control]="password"
           icon="lock-closed-outline"
           label="Password"
           type="password"
@@ -27,16 +36,12 @@
     </ion-row>
     <ion-row>
       <ion-col>
-        <ion-button type="submit">login</ion-button>
-      </ion-col>
-    </ion-row>
-    <ion-row>
-      <ion-col>
-        <img
-          class="IconNote"
-          src="../../../assets/IconNote.png"
-          alt="Icon note"
-        />
+        <app-button
+          [disable]="this.form.invalid" 
+          type="submit" 
+          value="login" 
+          width="305px">
+        </app-button>
       </ion-col>
     </ion-row>
   </form>

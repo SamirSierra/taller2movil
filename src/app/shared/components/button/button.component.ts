@@ -18,6 +18,7 @@ export class ButtonComponent {
   @Input() expand: ExpandType = 'default';
   @Input() icon: string = '';
   @Input() customClass: string = '';
+  @Input() disable: boolean = false;
  
 
   constructor() {}

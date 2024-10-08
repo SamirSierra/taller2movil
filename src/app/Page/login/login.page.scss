@@ -9,3 +9,17 @@
 .app-button{
     margin-left: 25%;
 }
+
+a{
+    cursor: pointer;
+    float: left;
+    text-transform: uppercase;
+    font-family: Roboto;
+    font-size: 25px;
+    font-weight: 600;
+    text-decoration: none;
+}
+
+app-button{
+    margin-left: 15%;   
+}
