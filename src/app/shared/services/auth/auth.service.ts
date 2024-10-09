@@ -20,7 +20,6 @@ export class AuthService {
       .then((res) => resolve(res))
       .catch((err) => reject(err));
     })
-    return await this.angularFire.signInWithEmailAndPassword(email, Password);
   }
 
   public async logout() {

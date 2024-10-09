@@ -6,6 +6,10 @@
           <ion-title>Home</ion-title>
         </ion-toolbar>
       </ion-header>
+      <div class="container">
+        <ion-searchbar animated="true" placeholder="Animated"></ion-searchbar>
+        <app-avatar></app-avatar>
+      </div>
       <ion-content>
         <ion-list>
           <ion-item *ngFor="let task of tasks">
