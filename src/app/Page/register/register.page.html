@@ -1,56 +1,80 @@
 <ion-content [fullscreen]="true">
 
+
   <form [formGroup]="registerForm" (ngSubmit)="doRegister()">
-    
-      <ion-card-content>
-        <app-avatar [control]="image"></app-avatar>
-      </ion-card-content>
-    
+    <ion-card-content>
+      <app-avatar [control]="image"></app-avatar>
+    </ion-card-content>
 
     <ion-card>
       <ion-card-content>
         <app-input icon="person" [Control]="name" label="Name..." type="text"></app-input>
+        <ion-text color="danger" *ngIf="name.invalid && (name.dirty || name.touched)">
+          Name is required.
+        </ion-text>
       </ion-card-content>
     </ion-card>
 
     <ion-card>
       <ion-card-content>
-        <app-input icon="person" [Control]="Lastname"  label="Lastname..." type="text"></app-input>
+        <app-input icon="person" [Control]="Lastname" label="Lastname..." type="text"></app-input>
+        <ion-text color="danger" *ngIf="Lastname.invalid && (Lastname.dirty || Lastname.touched)">
+          Lastname is required.
+        </ion-text>
       </ion-card-content>
     </ion-card>
 
     <ion-card>
       <ion-card-content>
-        <app-input icon="time" [Control]="Age"  label="Age..." type="number"></app-input>
+        <app-input icon="time" [Control]="Age" label="Age..." type="number"></app-input>
+        <ion-text color="danger" *ngIf="Age.invalid && (Age.dirty || Age.touched)">
+          Age is required.
+        </ion-text>
       </ion-card-content>
     </ion-card>
 
     <ion-card>
       <ion-card-content>
-        <app-input icon="call" [Control]="Phone"  label="Phone..." type="number"></app-input>
+        <app-input icon="call" [Control]="Phone" label="Phone..." type="number"></app-input>
+        <div *ngIf="Phone.invalid && (Phone.dirty || Phone.touched)">
+          <ion-text color="danger">Phone number is required.</ion-text>
+        </div>
       </ion-card-content>
     </ion-card>
 
+
     <ion-card>
       <ion-card-content>
-        <app-input icon="mail" [Control]="Email"  label="E-mail..." type="email"></app-input>
+        <app-input icon="mail" [Control]="Email" label="E-mail..." type="email"></app-input>
+        <ion-text color="danger" *ngIf="Email.invalid && (Email.dirty || Email.touched)">
+          Email is required.
+        </ion-text>
       </ion-card-content>
     </ion-card>
 
     <ion-card>
       <ion-card-content>
         <app-input icon="calendar" [Control]="Password" label="Password..." type="password"></app-input>
-      </ion-card-content>
-    </ion-card>
-    <ion-card>
-      <ion-card-content>
-        <app-input icon="calendar" [Control]="Password" label="Confirm Password..." type="password"></app-input>
+        <ion-text color="danger" *ngIf="Password.invalid && (Password.dirty || Password.touched)">
+          Password is required.
+        </ion-text>
       </ion-card-content>
     </ion-card>
 
-    
+    <ion-card>
       <ion-card-content>
-        <app-button  color="primary"  expand="full" type="submit" value="Register"></app-button>
+        <app-input icon="calendar" [Control]="confirmPassword" label="Confirm Password..." type="password"></app-input>
+        <ion-text color="danger" *ngIf="confirmPassword.invalid && (confirmPassword.dirty || confirmPassword.touched)">
+          Confirm Password is required.
+        </ion-text>
+        <ion-text color="danger" *ngIf="registerForm.errors?.['passwordMismatch']">
+          Passwords do not match.
+        </ion-text>
       </ion-card-content>
+    </ion-card>
+
+    <ion-card-content>
+      <app-button type="submit" value="register" expand="full" color="primary" ></app-button>
+    </ion-card-content>
   </form>
 </ion-content>

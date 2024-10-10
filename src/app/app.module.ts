@@ -6,6 +6,7 @@ import { IonicModule, IonicRouteStrategy } from '@ionic/angular';
 import { AngularFireModule } from '@angular/fire/compat';
 import { AngularFireAuthModule} from '@angular/fire/compat/auth'
 
+import { AngularFirestoreModule } from '@angular/fire/compat/firestore';
 import { AppComponent } from './app.component';
 import { AppRoutingModule } from './app-routing.module';
 import { environment } from 'src/environments/environment.prod';
@@ -21,9 +22,12 @@ import { ReactiveFormsModule } from '@angular/forms';
     AppRoutingModule,
     AngularFireModule.initializeApp(environment.FIREBASE_CREDENTIALS),
     AngularFireAuthModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    AngularFirestoreModule,
   ],
-  providers: [{ provide: BaseRouteReuseStrategy, useClass: IonicRouteStrategy }],
+  providers: [
+    { provide: BaseRouteReuseStrategy, useClass: IonicRouteStrategy },
+  ],
   bootstrap: [AppComponent],
 })
 export class AppModule {}
