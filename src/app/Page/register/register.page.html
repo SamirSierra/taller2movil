@@ -26,7 +26,7 @@
 
     <ion-card>
       <ion-card-content>
-        <app-input icon="time" [Control]="Age" label="Age..." type="number"></app-input>
+        <app-input icon="calendar" [Control]="Age" label="Age..." type="number"></app-input>
         <ion-text color="danger" *ngIf="Age.invalid && (Age.dirty || Age.touched)">
           Age is required.
         </ion-text>
@@ -54,7 +54,7 @@
 
     <ion-card>
       <ion-card-content>
-        <app-input icon="calendar" [Control]="Password" label="Password..." type="password"></app-input>
+        <app-input icon="lock-closed-outline" [Control]="Password" label="Password..." type="password"></app-input>
         <ion-text color="danger" *ngIf="Password.invalid && (Password.dirty || Password.touched)">
           Password is required.
         </ion-text>
@@ -63,7 +63,7 @@
 
     <ion-card>
       <ion-card-content>
-        <app-input icon="calendar" [Control]="confirmPassword" label="Confirm Password..." type="password"></app-input>
+        <app-input icon="lock-closed-outline" [Control]="confirmPassword" label="Confirm Password..." type="password"></app-input>
         <ion-text color="danger" *ngIf="confirmPassword.invalid && (confirmPassword.dirty || confirmPassword.touched)">
           Confirm Password is required.
         </ion-text>
@@ -73,8 +73,15 @@
       </ion-card-content>
     </ion-card>
 
+
     <ion-card-content>
-      <app-button type="submit" value="register" expand="full" color="primary" ></app-button>
+      <app-button type="submit" value="register" expand="full" color="primary"  [disable]="this.registerForm.invalid"></app-button>
+    </ion-card-content>
+
+    <ion-card-content>
+      <app-button type="button" value="Already registered? Go to Login" expand="full" color="success"
+        (click)="goToLogin()">
+      </app-button>
     </ion-card-content>
   </form>
 </ion-content>
