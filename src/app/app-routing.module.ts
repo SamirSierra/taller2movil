@@ -2,12 +2,14 @@ import { NgModule } from '@angular/core';
 import { PreloadAllModules, RouterModule, Routes } from '@angular/router';
 import { HomePage } from './Page/home/home.page';
 import { TareasPage } from './Page/tareas/tareas.page';
+import { authGuard } from './shared/guard/auth.guard';
 
 const routes: Routes = [
   {
     path: 'home',
     loadChildren: () =>
       import('./Page/home/home.module').then((m) => m.HomePageModule),
+      canActivate: [authGuard]
   },
 
   {

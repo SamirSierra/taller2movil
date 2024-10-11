@@ -28,6 +28,15 @@ export class AuthService {
   }
 
   public async isAuth() {
-    return await this.angularFire.currentUser;
+    return new Promise((resolve, reject) =>{
+      this.angularFire.onAuthStateChanged((res) => {
+        console.log(res);
+        if(res) {
+          resolve(true);
+        }else {
+          reject(false);
+        }
+      }, exception => reject(exception));
+    });
   }
 }
