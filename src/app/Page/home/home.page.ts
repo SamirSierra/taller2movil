@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
-import { TareasService } from 'src/app/services/tareas.service'; 
+ 
 
 @Component({
   selector: 'app-home',
@@ -11,9 +11,9 @@ export class HomePage implements OnInit {
   tasks: any[] = [];
   expandedIndex: number | null = null;
 
-  constructor(private tareasService: TareasService) {}
+  constructor() {}
 
   ngOnInit() {
-    this.tasks = this.tareasService.getTasks();
+    
   }
 }

@@ -69,6 +69,9 @@
         <ion-text color="danger" *ngIf="Password.invalid && (Password.dirty || Password.touched)">
           Password is required.
         </ion-text>
+        <ion-text color="danger" *ngIf="Password.errors?.['minlength'] && Password.touched">
+          Password must be at least 8 characters long.
+        </ion-text>
       </ion-card-content>
     </ion-card>
 

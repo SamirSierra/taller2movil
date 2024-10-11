@@ -20,8 +20,7 @@ export class RegisterPage {
   public Password!: FormControl;
   public confirmPassword!: FormControl;
   public registerForm!: FormGroup;
-  public passwordVisible: boolean = false;
-  public confirmPasswordVisible: boolean = false;
+  
 
   constructor(
     private readonly authSrv: AuthService,
@@ -76,7 +75,7 @@ export class RegisterPage {
       Validators.pattern(/^3\d{9}$/),
     ]);
     this.Email = new FormControl('', [Validators.required, Validators.email]);
-    this.Password = new FormControl('', [Validators.required]);
+    this.Password = new FormControl('', [Validators.required , Validators.minLength(8)]);
     this.confirmPassword = new FormControl('', Validators.required);
     this.registerForm = new FormGroup(
       {
