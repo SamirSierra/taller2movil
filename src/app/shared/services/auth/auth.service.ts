@@ -8,10 +8,11 @@ export class AuthService {
   constructor(private readonly angularFire: AngularFireAuth) {}
 
   public async register(email: string, Password: string) {
-    return await this.angularFire.createUserWithEmailAndPassword(
-      email,
-      Password
-    );
+    return new Promise((resolve, reject) => {
+      this.angularFire.createUserWithEmailAndPassword(email, Password)
+        .then((res) => resolve(res))
+        .catch((err) => reject(err));
+    });
   }
 
   public async login(email: string, Password: string) {
