@@ -9,4 +9,8 @@
         [placeholder]="label" 
         (keyup)="setValue($event)">
     </ion-input>
+
+    <ion-icon *ngIf="icon === 'lock-closed-outline'" slot="end" [name]="passwordVisible ? 'eye-off-outline' : 'eye-outline'"
+        (click)="togglePasswordVisibility()">
+    </ion-icon>
 </ion-item>

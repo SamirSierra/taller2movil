@@ -39,20 +39,26 @@ export class RegisterPage {
       await this.showAlert('Please fill all the required fields correctly.');
       return;
     }
+    const { Email, Password } = this.registerForm.value;
 
-    try {
-      await this.Loadingsrv.show();
+    try { 
+      const emailExists = await this.firebaseService.emailExists(Email);
+      if (emailExists) {
+        await this.showAlert('The email is already registered.');
+        return;
+      }
+
       const userData = this.registerForm.value;
       await this.firebaseService.addUser(userData);
       console.log('User registered: ', userData);
 
-      const { Email, Password } = this.registerForm.value;
       const response = await this.authSrv.register(Email, Password);
       this.navCtr.navigateForward('home');
       await this.Loadingsrv.Dismiss();
     } catch (error) {
       await this.Loadingsrv.Dismiss();
       console.error('Error during registration:', error);
+       
     }
   }
 
@@ -67,7 +73,7 @@ export class RegisterPage {
     this.Age = new FormControl('', [Validators.required]);
     this.Phone = new FormControl('', [
       Validators.required,
-      Validators.pattern('^[0-9]*$'),
+      Validators.pattern(/^3\d{9}$/),
     ]);
     this.Email = new FormControl('', [Validators.required, Validators.email]);
     this.Password = new FormControl('', [Validators.required]);
