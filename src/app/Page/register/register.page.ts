@@ -27,22 +27,19 @@ export class RegisterPage {
     private readonly authSrv: AuthService,
     private readonly Loadingsrv: LoadingService,
     private readonly navCtr: NavController,
-    private readonly firebaseService: FirebaseService
+    private readonly firebaseService: FirebaseService,
+    private readonly alertCtrl: AlertController
   ) {
     this.InitForm();
   }
 
   public async doRegister() {
-    
-    console.log('Formulario válido:', this.registerForm.valid);
-
     if (this.registerForm.invalid) {
-      this.registerForm.markAllAsTouched(); 
-      console.log('Formulario inválido, revise los campos.');
-      return; 
+      this.registerForm.markAllAsTouched();
+      await this.showAlert('Please fill all the required fields correctly.');
+      return;
     }
 
-    
     try {
       await this.Loadingsrv.show();
       const userData = this.registerForm.value;
@@ -51,7 +48,7 @@ export class RegisterPage {
 
       const { Email, Password } = this.registerForm.value;
       const response = await this.authSrv.register(Email, Password);
-      this.navCtr.navigateForward('login');
+      this.navCtr.navigateForward('home');
       await this.Loadingsrv.Dismiss();
     } catch (error) {
       await this.Loadingsrv.Dismiss();
@@ -59,12 +56,19 @@ export class RegisterPage {
     }
   }
 
+  public goToLogin() {
+    this.navCtr.navigateForward('login'); 
+  }
+
   private InitForm() {
     this.image = new FormControl('');
     this.name = new FormControl('', [Validators.required]);
     this.Lastname = new FormControl('', [Validators.required]);
-    this.Age = new FormControl('', [Validators.required ]);
-    this.Phone = new FormControl('', [Validators.required,Validators.pattern('^[0-9]*$'),]); 
+    this.Age = new FormControl('', [Validators.required]);
+    this.Phone = new FormControl('', [
+      Validators.required,
+      Validators.pattern('^[0-9]*$'),
+    ]);
     this.Email = new FormControl('', [Validators.required, Validators.email]);
     this.Password = new FormControl('', [Validators.required]);
     this.confirmPassword = new FormControl('', Validators.required);
@@ -82,6 +86,7 @@ export class RegisterPage {
       { validators: this.passwordMatchValidator }
     );
   }
+  
   private passwordMatchValidator(
     form: AbstractControl
   ): ValidationErrors | null {
@@ -91,5 +96,14 @@ export class RegisterPage {
       return { passwordMismatch: true };
     }
     return null;
+  }
+
+  async showAlert(message: string) {
+    const alert = await this.alertCtrl.create({
+      header: 'Form Error',
+      message: message,
+      buttons: ['OK'],
+    });
+    await alert.present();
   }
 }
