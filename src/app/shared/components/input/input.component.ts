@@ -8,26 +8,25 @@ type  ButtonType = "text" | "number" | "tel" | "email" | "password"
   templateUrl: './input.component.html',
   styleUrls: ['./input.component.scss'],
 })
-export class InputComponent   {
-  @Input() width: string = "auto";
-  @Input() height: string = "auto";
-  @Input() icon: string = "";
-  @Input() label: string = "";
+export class InputComponent {
+  @Input() width: string = 'auto';
+  @Input() height: string = 'auto';
+  @Input() icon: string = '';
+  @Input() label: string = '';
   @Input() Control = new FormControl();
-  @Input() type: ButtonType = "text";
+  @Input() type: ButtonType = 'text';
   @Input() disabled: boolean = false;
 
-  constructor() { }
+  public passwordVisible: boolean = false;
 
-  public setValue(event: any){
+  constructor() {}
 
-    this.Control.setValue(event.target.value);
-
+  togglePasswordVisibility() {
+    this.passwordVisible = !this.passwordVisible;
+    this.type = this.passwordVisible ? 'text' : 'password';
   }
 
-  
-
-
-
-
+  public setValue(event: any) {
+    this.Control.setValue(event.target.value);
+  }
 }

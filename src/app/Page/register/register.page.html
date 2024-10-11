@@ -36,9 +36,15 @@
     <ion-card>
       <ion-card-content>
         <app-input icon="call" [Control]="Phone" label="Phone..." type="number"></app-input>
-        <div *ngIf="Phone.invalid && (Phone.dirty || Phone.touched)">
-          <ion-text color="danger">Phone number is required.</ion-text>
-        </div>
+       <div *ngIf="Phone.invalid && (Phone.dirty || Phone.touched)">
+         <ion-text color="danger" *ngIf="Phone.errors?.['required']">
+           Phone number is required.
+         </ion-text>
+        
+         <ion-text color="danger" *ngIf="Phone.errors?.['pattern']">
+           Phone number is invalid.
+         </ion-text>
+       </div>
       </ion-card-content>
     </ion-card>
 
@@ -46,9 +52,14 @@
     <ion-card>
       <ion-card-content>
         <app-input icon="mail" [Control]="Email" label="E-mail..." type="email"></app-input>
-        <ion-text color="danger" *ngIf="Email.invalid && (Email.dirty || Email.touched)">
+        <div *ngIf="Email.invalid && (Email.dirty || Email.touched)">
+         <ion-text color="danger" *ngIf="Email.errors?.['required']">
           Email is required.
-        </ion-text>
+         </ion-text>
+         <ion-text color="danger" *ngIf="Email.errors?.['email']">
+          Email is invalid.
+         </ion-text>
+        </div>
       </ion-card-content>
     </ion-card>
 
@@ -57,6 +68,9 @@
         <app-input icon="lock-closed-outline" [Control]="Password" label="Password..." type="password"></app-input>
         <ion-text color="danger" *ngIf="Password.invalid && (Password.dirty || Password.touched)">
           Password is required.
+        </ion-text>
+        <ion-text color="danger" *ngIf="Password.errors?.['minlength'] && Password.touched">
+          Password must be at least 8 characters long.
         </ion-text>
       </ion-card-content>
     </ion-card>
@@ -75,7 +89,7 @@
 
 
     <ion-card-content>
-      <app-button type="submit" value="register" expand="full" color="primary"  [disable]="this.registerForm.invalid"></app-button>
+      <app-button type="submit" value="register" expand="full" color="primary"></app-button>
     </ion-card-content>
 
     <ion-card-content>
