@@ -3,6 +3,7 @@ import { PreloadAllModules, RouterModule, Routes } from '@angular/router';
 import { HomePage } from './Page/home/home.page';
 import { TareasPage } from './Page/tareas/tareas.page';
 import { authGuard } from './shared/guard/auth.guard';
+import { CartareasComponent } from './cartareas/cartareas.component';
 
 const routes: Routes = [
   {
@@ -11,6 +12,9 @@ const routes: Routes = [
       import('./Page/home/home.module').then((m) => m.HomePageModule),
       canActivate: [authGuard]
   },
+  { 
+    path: 'cartareas',
+     component: CartareasComponent },
 
   {
     path: 'login',
@@ -29,7 +33,8 @@ const routes: Routes = [
     { path: '', redirectTo: 'login', pathMatch: 'full' },
   { path: 'home', component: HomePage },
   { path: 'nueva-tarea', component: TareasPage }, 
-  
+   
+
   {
     path: '**',
     redirectTo: 'login',

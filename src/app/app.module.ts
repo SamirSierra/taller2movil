@@ -12,9 +12,10 @@ import { AppRoutingModule } from './app-routing.module';
 import { environment } from 'src/environments/environment.prod';
 import { CoreModule } from './core/core/core.module';
 import { ReactiveFormsModule } from '@angular/forms';
+import { CartareasComponent } from './cartareas/cartareas.component';
 
 @NgModule({
-  declarations: [AppComponent],
+  declarations: [AppComponent, CartareasComponent],
   imports: [
     CoreModule,
     BrowserModule,
