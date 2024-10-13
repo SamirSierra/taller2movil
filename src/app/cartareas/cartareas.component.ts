@@ -4,8 +4,8 @@ interface Tarea {
   id: number;
   titulo: string;
   descripcion: string;
-  fecha: string; // Propiedad de fecha
-  color: string;  // Propiedad de color
+  fecha: string;
+  color: string; 
 }
 
 @Component({
@@ -17,27 +17,26 @@ export class CartareasComponent {
   tareas: Tarea[] = [];
   nuevoTitulo: string = '';
   nuevaDescripcion: string = '';
-  tareaEditando: Tarea | null = null;
-  colorSeleccionado: string = ''; // Color seleccionado por el usuario
-  fechaActual: string = new Date().toLocaleDateString(); // Almacenar la fecha actual
+  tareaTR: Tarea | null = null;
+  colorCarta: string = ''; 
+  fechaActual: string = new Date().toLocaleDateString(); 
 
   agregarTarea() {
-    const colorFinal = this.colorSeleccionado || 'light'; // Usar blanco si no hay color seleccionado
-
+    const colorFinal = this.colorCarta || 'dark'; 
     const nuevaTarea: Tarea = {
       id: Date.now(),
       titulo: this.nuevoTitulo,
       descripcion: this.nuevaDescripcion,
-      fecha: this.fechaActual, // Asignar la fecha actual
-      color: colorFinal,  // Asignar color seleccionado
+      fecha: this.fechaActual, 
+      color: colorFinal,  
     };
 
-    if (this.tareaEditando) {
-      this.tareaEditando.titulo = this.nuevoTitulo;
-      this.tareaEditando.descripcion = this.nuevaDescripcion;
-      this.tareaEditando.color = colorFinal; // Actualizar color en edición
-      this.tareaEditando.fecha = nuevaTarea.fecha; // Actualizar fecha en edición
-      this.tareaEditando = null; // Limpiar después de actualizar
+    if (this.tareaTR) {
+      this.tareaTR.titulo = this.nuevoTitulo;
+      this.tareaTR.descripcion = this.nuevaDescripcion;
+      this.tareaTR.color = colorFinal; 
+      this.tareaTR.fecha = nuevaTarea.fecha; 
+      this.tareaTR = null; 
     } else {
       this.tareas.push(nuevaTarea);
     }
@@ -49,15 +48,15 @@ export class CartareasComponent {
   }
 
   iniciarEdicion(tarea: Tarea) {
-    this.tareaEditando = tarea;
+    this.tareaTR = tarea;
     this.nuevoTitulo = tarea.titulo;
     this.nuevaDescripcion = tarea.descripcion;
-    this.colorSeleccionado = tarea.color; // Establecer color al editar
+    this.colorCarta = tarea.color; 
   }
 
   limpiarCampos() {
     this.nuevoTitulo = '';
     this.nuevaDescripcion = '';
-    this.colorSeleccionado = ''; // Limpiar color seleccionado
+    this.colorCarta = ''; 
   }
 }

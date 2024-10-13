@@ -27,14 +27,14 @@
     </ion-card>
   </ion-list>
 
-  <!-- Vista previa de la tarea que se está creando -->
-  <ion-card [color]="colorSeleccionado || 'light'" *ngIf="nuevoTitulo || nuevaDescripcion">
+  
+  <ion-card [color]="colorCarta || 'light'" *ngIf="nuevoTitulo || nuevaDescripcion">
     <ion-card-header>
       <ion-card-title>{{ nuevoTitulo || 'Título' }}</ion-card-title>
       <ion-card-subtitle>{{ nuevaDescripcion || 'Descripción' }}</ion-card-subtitle>
     </ion-card-header>
     <ion-card-content>
-      <p>{{ fechaActual }}</p> <!-- Mostrar la fecha actual -->
+      <p>{{ fechaActual }}</p> 
     </ion-card-content>
   </ion-card>
 
@@ -50,10 +50,9 @@
 
   <ion-item>
     <ion-label color="medium">Color de la carta</ion-label>
-    <ion-select [(ngModel)]="colorSeleccionado">
+    <ion-select [(ngModel)]="colorCarta">
       <ion-select-option value="">Blanco</ion-select-option>
-      <ion-select-option value="light">Claro</ion-select-option>
-      <ion-select-option value="dark">Oscuro</ion-select-option>
+      <ion-select-option value="light">Negro</ion-select-option>
       <ion-select-option value="primary">Azul</ion-select-option>
       <ion-select-option value="secondary">Celeste</ion-select-option>
       <ion-select-option value="tertiary">Violeta</ion-select-option>
@@ -65,6 +64,6 @@
   </ion-item>
 
   <ion-button expand="full" (click)="agregarTarea()">
-    {{ tareaEditando ? 'Actualizar Tarea' : 'Agregar Tarea' }}
+    {{ tareaTR ? 'Actualizar Tarea' : 'Agregar Tarea' }}
   </ion-button>
 </ion-content>
