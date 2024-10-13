@@ -28,13 +28,13 @@
   </ion-list>
 
   <!-- Vista previa de la tarea que se está creando -->
-  <ion-card [color]="colorSeleccionado || 'light'" *ngIf="nuevoTitulo || nuevaDescripcion || nuevaFecha">
+  <ion-card [color]="colorSeleccionado || 'light'" *ngIf="nuevoTitulo || nuevaDescripcion">
     <ion-card-header>
       <ion-card-title>{{ nuevoTitulo || 'Título' }}</ion-card-title>
       <ion-card-subtitle>{{ nuevaDescripcion || 'Descripción' }}</ion-card-subtitle>
     </ion-card-header>
     <ion-card-content>
-      <p>{{ nuevaFecha || 'Fecha' }}</p>
+      <p>{{ fechaActual }}</p> <!-- Mostrar la fecha actual -->
     </ion-card-content>
   </ion-card>
 
@@ -49,23 +49,18 @@
   </ion-item>
 
   <ion-item>
-    <ion-label position="floating">Fecha</ion-label>
-    <ion-input [(ngModel)]="nuevaFecha" type="date"></ion-input>
-  </ion-item>
-
-  <ion-item>
     <ion-label color="medium">Color de la carta</ion-label>
     <ion-select [(ngModel)]="colorSeleccionado">
       <ion-select-option value="">Blanco</ion-select-option>
-      <ion-select-option value="dark">Blanco</ion-select-option>
+      <ion-select-option value="light">Claro</ion-select-option>
+      <ion-select-option value="dark">Oscuro</ion-select-option>
       <ion-select-option value="primary">Azul</ion-select-option>
       <ion-select-option value="secondary">Celeste</ion-select-option>
-      <ion-select-option value="tertiary">violeta</ion-select-option>
+      <ion-select-option value="tertiary">Violeta</ion-select-option>
       <ion-select-option value="success">Verde</ion-select-option>
       <ion-select-option value="warning">Amarillo</ion-select-option>
       <ion-select-option value="danger">Rojo</ion-select-option>
       <ion-select-option value="medium">Gris</ion-select-option>
-      <ion-select-option value="light">Negro</ion-select-option>
     </ion-select>
   </ion-item>
 
