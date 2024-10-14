@@ -1,18 +1,21 @@
 <ion-tab-bar slot="bottom">
   <ion-tab-button tab="home" (click)="navigateToHome()">
-    <ion-icon name="home" [ngStyle]="{'color': color_Home }"></ion-icon>
+    <ion-icon name="home" [ngStyle]="{ color: color_Home }"></ion-icon>
     Home
   </ion-tab-button>
   <ion-tab-button (click)="navigateToTareas()">
-    <ion-icon name="add-circle" [ngStyle]="{'color': color_Tarea }"></ion-icon>
+    <ion-icon name="add-circle" [ngStyle]="{ color: color_Tarea }"></ion-icon>
     Nueva Tarea
   </ion-tab-button>
   <ion-tab-button tab="library">
-    <ion-icon name="person-circle" [ngStyle]="{'color': color_Perfil }"></ion-icon>
+    <ion-icon
+      name="person-circle"
+      [ngStyle]="{ color: color_Perfil }"
+    ></ion-icon>
     Mi Perfil
   </ion-tab-button>
-  <ion-tab-button tab="search">
-    <ion-icon name="power" [ngStyle]="{'color': color_Salir }"></ion-icon>
+  <ion-tab-button (click)="dologOut()">
+    <ion-icon name="power" [ngStyle]="{ color: color_Salir }"></ion-icon>
     Salir
   </ion-tab-button>
 </ion-tab-bar>

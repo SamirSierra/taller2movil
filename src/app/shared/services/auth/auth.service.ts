@@ -25,6 +25,7 @@ export class AuthService {
 
   public async logout() {
     return await this.angularFire.signOut();
+
   }
 
   public async isAuth() {

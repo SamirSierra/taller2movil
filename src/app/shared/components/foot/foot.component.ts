@@ -1,20 +1,22 @@
 import { Component, Input, OnInit } from '@angular/core';
-import { Router } from '@angular/router';
+import { Router, RouterLink } from '@angular/router';
+import { AuthService } from '../../services/auth/auth.service';
 
 @Component({
   selector: 'app-foot',
   templateUrl: './foot.component.html',
   styleUrls: ['./foot.component.scss'],
 })
-export class FootComponent  implements OnInit {
-  @Input() color_Home: String = "#808080"; 
-  @Input() color_Tarea: String = "#808080"; 
-  @Input() color_Perfil: String = "#808080"; 
-  @Input() color_Salir: String = "#808080";  
+export class FootComponent {
+  @Input() color_Home: string = '#808080';
+  @Input() color_Tarea: string = '#808080';
+  @Input() color_Perfil: string = '#808080';
+  @Input() color_Salir: string = '#808080';
 
-  constructor(private router: Router) { }
-
-  ngOnInit() {}
+  constructor(
+    private readonly router: Router,
+    private readonly authSrv: AuthService
+  ) {}
 
   navigateToTareas() {
     this.router.navigate(['/nueva-tarea']);
@@ -27,6 +29,14 @@ export class FootComponent  implements OnInit {
   navigateToPerfil() {
     this.router.navigate(['/##']);
   }
-
-
+  dologOut() {
+    this.authSrv
+      .logout()
+      .then(() => {
+        this.router.navigate(['/login']); // Redirige a la ruta de inicio de sesión
+      })
+      .catch((error) => {
+        console.error('Error al cerrar sesión: ', error);
+      });
+  }
 }
