@@ -6,7 +6,7 @@ import { authGuard } from './shared/guard/auth.guard';
 
 const routes: Routes = [
   {
-    path: 'home',
+    path: 'home/:id',
     loadChildren: () =>
       import('./Page/home/home.module').then((m) => m.HomePageModule),
       canActivate: [authGuard]
@@ -31,14 +31,19 @@ const routes: Routes = [
   { path: 'nueva-tarea', component: TareasPage }, 
   
   {
+    path: 'tareas',
+    loadChildren: () => import('./Page/tareas/tareas.module').then( m => m.TareasPageModule)
+  },
+  {
+    path: 'profile',
+    loadChildren: () => import('./Page/profile/profile.module').then( m => m.ProfilePageModule)
+  },
+  {
     path: '**',
     redirectTo: 'login',
     pathMatch: 'full',
   },
-  {
-    path: 'tareas',
-    loadChildren: () => import('./Page/tareas/tareas.module').then( m => m.TareasPageModule)
-  },
+
 
 ];
 

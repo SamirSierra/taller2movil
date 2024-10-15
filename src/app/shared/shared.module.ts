@@ -10,6 +10,8 @@ import { StorageService } from './services/storage.service';
 import { LoadingService } from './Controllers/loading/loading.service';
 import { FootComponent } from './components/foot/foot.component';
 
+
+
 const Components = [InputComponent, AvatarComponent, ButtonComponent, FootComponent];
 const Modules = [CommonModule, IonicModule, FormsModule];
 const Providers = [AuthService, StorageService];

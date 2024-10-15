@@ -34,20 +34,21 @@ export class LoginPage {
     const alert = await this.alertCtr.create({
       header: 'Failed to log in. Please verify your credentials.',
       buttons: this.alertButtons,
-      cssClass: 'custom-alert'
+      cssClass: 'custom-alert',
     });
-  
+
     await alert.present();
   }
-  
 
   public async doLogin() {
     try {
       await this.loadingSrv.show();
-      const {email, password} = this.form.value;
-      await this.authSrv.login(email, password);
-      this.navCtr.navigateForward("home");
+      const { email, password } = this.form.value;
+
+      const userId = await this.authSrv.login(email, password);
+      this.navCtr.navigateForward('home');
       await this.loadingSrv.Dismiss();
+      console.log('User ID:', userId);
     } catch (error) {
       await this.loadingSrv.Dismiss();
       this.presentAlert();

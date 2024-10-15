@@ -1,5 +1,5 @@
-import { Component, Input, OnInit } from '@angular/core';
-import { Router, RouterLink } from '@angular/router';
+import { Component, Input } from '@angular/core';
+import { Router } from '@angular/router';
 import { AuthService } from '../../services/auth/auth.service';
 
 @Component({
@@ -26,14 +26,15 @@ export class FootComponent {
     this.router.navigate(['/home']);
   }
 
-  navigateToPerfil() {
-    this.router.navigate(['/##']);
+  navigateToProfile() {
+    this.router.navigate(['/profile']);
   }
+  
   dologOut() {
     this.authSrv
       .logout()
       .then(() => {
-        this.router.navigate(['/login']); // Redirige a la ruta de inicio de sesión
+        this.router.navigate(['/login']); 
       })
       .catch((error) => {
         console.error('Error al cerrar sesión: ', error);
