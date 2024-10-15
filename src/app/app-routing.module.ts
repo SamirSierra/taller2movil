@@ -3,13 +3,18 @@ import { PreloadAllModules, RouterModule, Routes } from '@angular/router';
 import { HomePage } from './Page/home/home.page';
 import { TareasPage } from './Page/tareas/tareas.page';
 import { authGuard } from './shared/guard/auth.guard';
+import { CartareasComponent } from './cartareas/cartareas.component';
 
 const routes: Routes = [
   {
     path: 'home',
     loadChildren: () =>
       import('./Page/home/home.module').then((m) => m.HomePageModule),
-      canActivate: [authGuard]
+    canActivate: [authGuard],
+  },
+  {
+    path: 'cartareas',
+    component: CartareasComponent,
   },
 
   {
@@ -24,12 +29,15 @@ const routes: Routes = [
         (m) => m.RegisterPageModule
       ),
   },
-  { path: 'tareas', loadChildren: () => 
-    import('./Page/tareas/tareas.module').then(m => m.TareasPageModule) },
-    { path: '', redirectTo: 'login', pathMatch: 'full' },
+  {
+    path: 'tareas',
+    loadChildren: () =>
+      import('./Page/tareas/tareas.module').then((m) => m.TareasPageModule),
+  },
+  { path: '', redirectTo: 'login', pathMatch: 'full' },
   { path: 'home', component: HomePage },
-  { path: 'nueva-tarea', component: TareasPage }, 
-  
+  { path: 'nueva-tarea', component: TareasPage },
+
   {
     path: '**',
     redirectTo: 'login',
@@ -37,15 +45,15 @@ const routes: Routes = [
   },
   {
     path: 'tareas',
-    loadChildren: () => import('./Page/tareas/tareas.module').then( m => m.TareasPageModule)
+    loadChildren: () =>
+      import('./Page/tareas/tareas.module').then((m) => m.TareasPageModule),
   },
-
 ];
 
 @NgModule({
   imports: [
     RouterModule.forRoot(routes, { preloadingStrategy: PreloadAllModules }),
   ],
-  exports: [RouterModule], 
+  exports: [RouterModule],
 })
 export class AppRoutingModule {}

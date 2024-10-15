@@ -9,9 +9,20 @@ import { AuthService } from './services/auth/auth.service';
 import { StorageService } from './services/storage.service';
 import { LoadingService } from './Controllers/loading/loading.service';
 import { FootComponent } from './components/foot/foot.component';
+import { BellComponent } from './components/bell/bell.component';
+import { CardComponent } from './components/card/card.component';
+import { ReactiveFormsModule } from '@angular/forms';
 
-const Components = [InputComponent, AvatarComponent, ButtonComponent, FootComponent];
-const Modules = [CommonModule, IonicModule, FormsModule];
+const Components =
+ [
+  InputComponent, 
+  AvatarComponent, 
+  ButtonComponent, 
+  FootComponent, 
+  BellComponent, 
+  CardComponent
+];
+const Modules = [CommonModule, IonicModule, FormsModule, ReactiveFormsModule];
 const Providers = [AuthService, StorageService];
 const Controllers = [LoadingService];
 

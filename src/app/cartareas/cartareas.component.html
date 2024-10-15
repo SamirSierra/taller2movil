@@ -1,0 +1,69 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>Lista de Tareas</ion-title>
+    <ion-buttons slot="end">
+      <ion-button>
+        <ion-icon name="notifications"></ion-icon>
+        <ion-badge *ngIf="tareas.length > 0">{{ tareas.length }}</ion-badge>
+      </ion-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-list>
+    <ion-card *ngFor="let tarea of tareas" [color]="tarea.color">
+      <ion-card-header>
+        <ion-card-title>{{ tarea.titulo }}</ion-card-title>
+        <ion-card-subtitle>{{ tarea.descripcion }}</ion-card-subtitle>
+      </ion-card-header>
+      <ion-card-content>
+        <p>{{ tarea.fecha }}</p>
+        <ion-buttons slot="end">
+          <ion-button (click)="iniciarEdicion(tarea)">Actualizar</ion-button>
+          <ion-button color="danger" (click)="eliminarTarea(tarea.id)">Eliminar</ion-button>
+        </ion-buttons>
+      </ion-card-content>
+    </ion-card>
+  </ion-list>
+
+  
+  <ion-card [color]="colorCarta || 'light'" *ngIf="nuevoTitulo || nuevaDescripcion">
+    <ion-card-header>
+      <ion-card-title>{{ nuevoTitulo || 'Título' }}</ion-card-title>
+      <ion-card-subtitle>{{ nuevaDescripcion || 'Descripción' }}</ion-card-subtitle>
+    </ion-card-header>
+    <ion-card-content>
+      <p>{{ fechaActual }}</p> 
+    </ion-card-content>
+  </ion-card>
+
+  <ion-item>
+    <ion-label position="floating">Título</ion-label>
+    <ion-input [(ngModel)]="nuevoTitulo"></ion-input>
+  </ion-item>
+
+  <ion-item>
+    <ion-label position="floating">Descripción</ion-label>
+    <ion-input [(ngModel)]="nuevaDescripcion"></ion-input>
+  </ion-item>
+
+  <ion-item>
+    <ion-label color="medium">Color de la carta</ion-label>
+    <ion-select [(ngModel)]="colorCarta">
+      <ion-select-option value="">Blanco</ion-select-option>
+      <ion-select-option value="light">Negro</ion-select-option>
+      <ion-select-option value="primary">Azul</ion-select-option>
+      <ion-select-option value="secondary">Celeste</ion-select-option>
+      <ion-select-option value="tertiary">Violeta</ion-select-option>
+      <ion-select-option value="success">Verde</ion-select-option>
+      <ion-select-option value="warning">Amarillo</ion-select-option>
+      <ion-select-option value="danger">Rojo</ion-select-option>
+      <ion-select-option value="medium">Gris</ion-select-option>
+    </ion-select>
+  </ion-item>
+
+  <ion-button expand="full" (click)="agregarTarea()">
+    {{ tareaTR ? 'Actualizar Tarea' : 'Agregar Tarea' }}
+  </ion-button>
+</ion-content>

@@ -1,21 +1,68 @@
-<ion-content [fullscreen]="true">
-  <br>
-  <ion-input label="Title..." label-placement="floating" fill="outline" placeholder="Enter title" type="text" [(ngModel)]="title" required></ion-input>
-  <br>
-  <ion-input label="Description..." label-placement="floating" fill="outline" placeholder="Enter description" type="text" [(ngModel)]="description" required></ion-input>
-  <br>
-  <ion-input label="Date..." label-placement="floating" fill="outline" placeholder="Enter date" type="date" [(ngModel)]="date" required></ion-input>
-  <br>
-  <ion-input label="User ID..." label-placement="floating" fill="outline" placeholder="Enter ID" type="number" [(ngModel)]="userId" required></ion-input>
-  <br>
-  <ion-button expand="full" (click)="saveTareas()">Done</ion-button>
-  <ion-button>
-    
-  </ion-button>
-  <ion-button>
-    
-  </ion-button>
+<ion-header>
+  <ion-toolbar>
+    <ion-title>Nueva Tarea</ion-title>
+    <div class="icon-bell-container">
+      <app-bell [tareasNumber]="tareas.length"></app-bell>
+    </div>
+  </ion-toolbar>
+</ion-header>
+<app-card 
+  [Title]="nuevoTitulo || 'Título predeterminado'"
+  [Description]="nuevaDescripcion || 'Descripción predeterminada'" 
+  [Color]="colorCarta || 'light'"
+  [Date]="fechaActual || 'Fecha predeterminada'"
+  >
+</app-card>
+<ion-content>
 
-</ion-content>
+  <form [formGroup]="taskForm" (ngSubmit)="submitTask()">
+    
+      <ion-card-content>
+        <app-avatar [control]="image"></app-avatar>
+      </ion-card-content>
+    
+    <ion-card>
+      <ion-card-content>
+        <app-input icon="book" [Control]="title" label="Título..." type="text"></app-input>
+        <ion-text color="danger" *ngIf="title.invalid && (title.dirty || title.touched)">
+          El título es obligatorio.
+        </ion-text>
+      </ion-card-content>
+    </ion-card>
 
-  <app-foot color_Tarea="#F4E59E"></app-foot>
+  
+    <ion-card>
+      <ion-card-content>
+        <app-input icon="clipboard" [Control]="description" label="Descripción..." type="text"></app-input>
+        <ion-text color="danger" *ngIf="description.invalid && (description.dirty || description.touched)">
+          La descripción es obligatoria.
+        </ion-text>
+      </ion-card-content>
+    </ion-card>
+  
+    
+    <ion-card>
+      <ion-card-content>
+        <ion-item>
+          <ion-label color="medium">Color de la carta</ion-label>
+          <ion-select [formControl]="color">
+            <ion-select-option value="light">Blanco</ion-select-option>
+            <ion-select-option value="primary">Azul</ion-select-option>
+            <ion-select-option value="secondary">Celeste</ion-select-option>
+            <ion-select-option value="tertiary">Violeta</ion-select-option>
+            <ion-select-option value="success">Verde</ion-select-option>
+            <ion-select-option value="warning">Amarillo</ion-select-option>
+            <ion-select-option value="danger">Rojo</ion-select-option>
+            <ion-select-option value="medium">Gris</ion-select-option>
+          </ion-select>
+        </ion-item>
+      </ion-card-content>
+    </ion-card>
+
+  
+    <ion-card-content>
+      <app-button type="submit" value="Agregar Tarea" expand="full" color="primary"></app-button>
+    </ion-card-content>
+    </form>
+    </ion-content>
+
