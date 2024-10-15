@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { AuthService } from 'src/app/shared/services/auth/auth.service';
 import { DataService } from 'src/app/shared/services/database.service';
+import { FirebaseService } from 'src/app/shared/services/firebase/firebase.service';
 
 @Component({
   selector: 'app-profile',
@@ -12,8 +13,8 @@ export class ProfilePage implements OnInit {
 
   constructor(
     private readonly authService: AuthService,
-    private readonly dataSrvc: DataService
-  ) { }
+    private readonly firebaseService:FirebaseService
+  ) {}
 
   async ngOnInit() {
     this.getUid();
