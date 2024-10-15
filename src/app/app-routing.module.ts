@@ -10,11 +10,12 @@ const routes: Routes = [
     path: 'home',
     loadChildren: () =>
       import('./Page/home/home.module').then((m) => m.HomePageModule),
-      canActivate: [authGuard]
+    canActivate: [authGuard],
   },
-  { 
+  {
     path: 'cartareas',
-     component: CartareasComponent },
+    component: CartareasComponent,
+  },
 
   {
     path: 'login',
@@ -28,12 +29,14 @@ const routes: Routes = [
         (m) => m.RegisterPageModule
       ),
   },
-  { path: 'tareas', loadChildren: () => 
-    import('./Page/tareas/tareas.module').then(m => m.TareasPageModule) },
-    { path: '', redirectTo: 'login', pathMatch: 'full' },
+  {
+    path: 'tareas',
+    loadChildren: () =>
+      import('./Page/tareas/tareas.module').then((m) => m.TareasPageModule),
+  },
+  { path: '', redirectTo: 'login', pathMatch: 'full' },
   { path: 'home', component: HomePage },
-  { path: 'nueva-tarea', component: TareasPage }, 
-   
+  { path: 'nueva-tarea', component: TareasPage },
 
   {
     path: '**',
@@ -42,15 +45,15 @@ const routes: Routes = [
   },
   {
     path: 'tareas',
-    loadChildren: () => import('./Page/tareas/tareas.module').then( m => m.TareasPageModule)
+    loadChildren: () =>
+      import('./Page/tareas/tareas.module').then((m) => m.TareasPageModule),
   },
-
 ];
 
 @NgModule({
   imports: [
     RouterModule.forRoot(routes, { preloadingStrategy: PreloadAllModules }),
   ],
-  exports: [RouterModule], 
+  exports: [RouterModule],
 })
 export class AppRoutingModule {}

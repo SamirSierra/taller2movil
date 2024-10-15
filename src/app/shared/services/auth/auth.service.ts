@@ -43,4 +43,8 @@ export class AuthService {
        });
     });
   }
+
+  getCurrentUser(){
+    return this.angularFire.authState;
+  }
 }

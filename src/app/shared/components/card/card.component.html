@@ -1,0 +1,16 @@
+<ion-list>
+  <ion-card  [color]="Color" >
+    <ion-card-header>
+      <ion-card-title>{{ Title }}</ion-card-title>
+      <ion-card-subtitle>{{ Description }}</ion-card-subtitle>
+    </ion-card-header>
+    <ion-card-content>
+      <p>{{ Date }}</p>
+      <ion-buttons slot="end">
+        <ion-button (click)="iniciarEdicion(Id)">Actualizar</ion-button>
+        <ion-button color="danger" (click)="eliminarTarea(Id)">Eliminar</ion-button>
+      </ion-buttons>
+    </ion-card-content>
+  </ion-card>
+</ion-list>
+<!--*ngFor="let tarea of tareas"-->

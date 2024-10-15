@@ -23,7 +23,7 @@ import { CartareasComponent } from './cartareas/cartareas.component';
     AngularFireAuthModule,
     ReactiveFormsModule,
     AngularFirestoreModule,
-    FormsModule
+    FormsModule,
   ],
   providers: [
     { provide: BaseRouteReuseStrategy, useClass: IonicRouteStrategy }, // Coma agregada aquí

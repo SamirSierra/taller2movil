@@ -1,7 +1,13 @@
 import { Component, Input} from '@angular/core';
 import { FormControl } from '@angular/forms';
 
-type  ButtonType = "text" | "number" | "tel" | "email" | "password"
+type ButtonType =
+  | 'text'
+  | 'number'
+  | 'tel'
+  | 'email'
+  | 'password'
+  | 'datetime-local';
 
 @Component({
   selector: 'app-input',
